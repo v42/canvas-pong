@@ -1,0 +1,14 @@
+{
+  "name": "Canvas Pong",
+  "version": "0.0.1",
+  "description": "Canvas pong",
+  "author": [
+    "Vitor Carlos <vitor@v42.com.br>"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "stylus": "~0.32.1"
+  },
+  "repository": "",
+  "license": "BSD"
+}
