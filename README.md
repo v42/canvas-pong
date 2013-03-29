@@ -4,7 +4,7 @@ This is a simple pong game made in canvas.
 
 The main motivation of doing another pong implementation in canvas is to make it right, with all features of a real game. So it has to be a simple game, so I can focus on it's fullness.
 
-## FEATURES
+## Features
 
 - FSM
 - Multiplayer
