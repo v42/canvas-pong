@@ -7,6 +7,7 @@ The main motivation of doing another pong implementation in canvas is to make it
 ## Features
 
 - FSM
+- Sound
 - Multiplayer
 - Multiple canvas: scenario, gui and players
 - Pause
