@@ -2,7 +2,7 @@
 
 This is a simple pong game made in canvas.
 
-The main motivation of doing another pong implementation in canvas is to make it right, with all features of a real game. So it has to be a simple game, so I can focus on it's fullness.
+The main motivation of doing a pong implementation in canvas is to make it right and focus on it's completeness in order to practise coding.
 
 ## Features
 
