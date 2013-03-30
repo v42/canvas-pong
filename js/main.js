@@ -2,8 +2,7 @@
   var app;
 
   app = (function() {
-    var gameLoop, init,
-      _this = this;
+    var gameLoop, init;
 
     init = function() {
       var bg, bgc, game, gic, gmc, gui;

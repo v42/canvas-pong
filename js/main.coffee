@@ -1,6 +1,6 @@
 app = (->
 
-    init = () =>
+    init = () ->
         bgc = document.getElementById 'background'
         gmc = document.getElementById 'game'
         gic = document.getElementById 'gui'
@@ -13,7 +13,7 @@ app = (->
 
         return
 
-    gameLoop = () =>
+    gameLoop = () ->
         console.log 'looping...'
         window.requestAnimationFrame gameLoop
         return
