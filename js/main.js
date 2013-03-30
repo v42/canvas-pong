@@ -1,1 +1,30 @@
-(function(){for(var n=0,e=["webkit","moz"],i=0;e.length>i&&!window.requestAnimationFrame;++i)window.requestAnimationFrame=window[e[i]+"RequestAnimationFrame"],window.cancelAnimationFrame=window[e[i]+"CancelAnimationFrame"]||window[e[i]+"CancelRequestAnimationFrame"];window.requestAnimationFrame||(window.requestAnimationFrame=function(e){var i=(new Date).getTime(),t=Math.max(0,16-(i-n)),a=window.setTimeout(function(){e(i+t)},t);return n=i+t,a}),window.cancelAnimationFrame||(window.cancelAnimationFrame=function(n){clearTimeout(n)})})(),function(){for(var n=0,e=["webkit","moz"],i=0;e.length>i&&!window.requestAnimationFrame;++i)window.requestAnimationFrame=window[e[i]+"RequestAnimationFrame"],window.cancelAnimationFrame=window[e[i]+"CancelAnimationFrame"]||window[e[i]+"CancelRequestAnimationFrame"];window.requestAnimationFrame||(window.requestAnimationFrame=function(e){var i=(new Date).getTime(),t=Math.max(0,16-(i-n)),a=window.setTimeout(function(){e(i+t)},t);return n=i+t,a}),window.cancelAnimationFrame||(window.cancelAnimationFrame=function(n){clearTimeout(n)})}(),function(){var n;n=function(){var n;return n=function(){var n,e,i,t,a,o;e=document.getElementById("background"),a=document.getElementById("player"),t=document.getElementById("gui"),n=e.getContext("2d"),i=a.getContext("2d"),o=t.getContext("2d")},{init:n}}(),n.init()}.call(this);
+(function() {
+  var app;
+
+  app = (function() {
+    var gameLoop, init,
+      _this = this;
+
+    init = function() {
+      var bg, bgc, game, gic, gmc, gui;
+
+      bgc = document.getElementById('background');
+      gmc = document.getElementById('game');
+      gic = document.getElementById('gui');
+      bg = bgc.getContext('2d');
+      game = gmc.getContext('2d');
+      gui = gic.getContext('2d');
+      gameLoop();
+    };
+    gameLoop = function() {
+      console.log('looping...');
+      window.requestAnimationFrame(gameLoop);
+    };
+    return {
+      init: init
+    };
+  })();
+
+  app.init();
+
+}).call(this);
