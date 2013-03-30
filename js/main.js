@@ -1,17 +1,1 @@
-(function() {
-  var app;
-
-  app = (function() {
-    var init;
-
-    init = function() {
-      return console.log('hello coffee module pattern');
-    };
-    return {
-      init: init
-    };
-  })();
-
-  app.init();
-
-}).call(this);
+(function(){for(var n=0,e=["webkit","moz"],i=0;e.length>i&&!window.requestAnimationFrame;++i)window.requestAnimationFrame=window[e[i]+"RequestAnimationFrame"],window.cancelAnimationFrame=window[e[i]+"CancelAnimationFrame"]||window[e[i]+"CancelRequestAnimationFrame"];window.requestAnimationFrame||(window.requestAnimationFrame=function(e){var i=(new Date).getTime(),t=Math.max(0,16-(i-n)),a=window.setTimeout(function(){e(i+t)},t);return n=i+t,a}),window.cancelAnimationFrame||(window.cancelAnimationFrame=function(n){clearTimeout(n)})})(),function(){for(var n=0,e=["webkit","moz"],i=0;e.length>i&&!window.requestAnimationFrame;++i)window.requestAnimationFrame=window[e[i]+"RequestAnimationFrame"],window.cancelAnimationFrame=window[e[i]+"CancelAnimationFrame"]||window[e[i]+"CancelRequestAnimationFrame"];window.requestAnimationFrame||(window.requestAnimationFrame=function(e){var i=(new Date).getTime(),t=Math.max(0,16-(i-n)),a=window.setTimeout(function(){e(i+t)},t);return n=i+t,a}),window.cancelAnimationFrame||(window.cancelAnimationFrame=function(n){clearTimeout(n)})}(),function(){var n;n=function(){var n;return n=function(){var n,e,i,t,a,o;e=document.getElementById("background"),a=document.getElementById("player"),t=document.getElementById("gui"),n=e.getContext("2d"),i=a.getContext("2d"),o=t.getContext("2d")},{init:n}}(),n.init()}.call(this);

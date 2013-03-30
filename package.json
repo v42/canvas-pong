@@ -9,7 +9,8 @@
   "devDependencies": {
     "flour": "",
     "stylus": "~0.32.1",
-    "coffee-script": "~1.6.2"
+    "coffee-script": "~1.6.2",
+    "uglify-js": "~2.2.5"
   },
   "repository": "",
   "license": "BSD"
