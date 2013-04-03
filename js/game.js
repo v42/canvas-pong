@@ -66,10 +66,13 @@
 
             bindKeys()
             drawBG()
-            updatePoints()
+            
+            //haxx to load the font on browser before writing it on the first time
+            document.getElementById('wrapper').style.fontFamily = "Rationale";
             window.setTimeout(function(){
-               updatePoints()
-            }, 20)
+                updatePoints()
+            }, 25)
+
             loop()
         }
 
@@ -199,7 +202,6 @@
 
             if(scored){
                 point_pause = true
-
                 window.setTimeout(function(){
                     point_pause = false
                 }, 2000)
