@@ -9,6 +9,7 @@
           , p1
           , p2
           , ball
+          , point_pause = false
 
 		var player = function() {
 			this.x =  0
@@ -28,6 +29,12 @@
           , h: 10
           , speedX: 3
           , speedY: 3
+          , reset: function(player){
+                this.x = WIDTH/2 - 5;
+                this.y = HEIGHT/2 - 5;
+                this.speedX = player == 2 ? -3 : 3;
+                this.speedY = 3;
+            }
         }
 
         var init = function() {
@@ -70,8 +77,8 @@
 
 		var drawBG = function(){
 			bg.fillStyle = "rgb(255,255,255)"
-			for (var i=0; i < 31; i++) {
-				bg.fillRect (395, i*20 + 5, 5, 15)
+			for (var i=0; i < 30; i++) {
+				bg.fillRect (397, i*20 + 5, 6, 15)
 			}
 		}
 
@@ -129,22 +136,38 @@
                 ball.speedY = -ball.speedY
             }
 
-            //ball movement
-            ball.x += ball.speedX
-            ball.y += ball.speedY
+            if(!point_pause){
+                //ball movement
+                ball.x += ball.speedX
+                ball.y += ball.speedY
 
-            //ball player 1 collision
-            if(ball.speedX < 0 && (ball.x <= p1.x + p1.w) && (ball.x >= p1.x)) {
-                if(ball.y >= p1.y && ball.y <= p1.y + p1.h){
-                    ball.speedX = -ball.speedX
+                //ball player 1 collision
+                if(ball.speedX < 0 && (ball.x <= p1.x + p1.w) && (ball.x >= p1.x)) {
+                    if(ball.y >= p1.y && ball.y <= p1.y + p1.h){
+                        ball.speedX = -ball.speedX + .5
+                    }
+                }
+
+                //ball player 2 collision
+                if(ball.speedX > 0 && (ball.x + ball.w >= p2.x) && (ball.x + ball.w <= p2.x + p2.w)) {
+                    if(ball.y >= p2.y && ball.y <= p2.y + p2.h){
+                        ball.speedX = -ball.speedX - .5
+                    }
                 }
             }
 
-            //ball player 2 collision
-            if(ball.speedX > 0 && (ball.x + ball.w >= p2.x) && (ball.x + ball.w <= p2.x + p2.w)) {
-                if(ball.y >= p2.y && ball.y <= p2.y + p2.h){
-                    ball.speedX = -ball.speedX
-                }
+            //player 1 point
+            if(ball.x >= WIDTH + ball.w){
+                p1.points++;
+                ball.reset();
+                update_points();
+            }
+
+            //player 2 point
+            if(ball.x <= 0 - ball.w){
+                p2.points++;
+                ball.reset(2);
+                update_points();
             }
 		}
 
@@ -161,6 +184,13 @@
             //drawing player 2
             game.fillRect (p2.x, p2.y, p2.w, p2.h)
 		}
+
+        var update_points = function(){
+            point_pause = true;
+            window.setTimeout(function(){
+                point_pause = false;
+            }, 2000);
+        }
 
 		return {
 			init: init
