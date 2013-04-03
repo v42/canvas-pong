@@ -10,11 +10,13 @@
           , p2
           , ball
 
-		var player = function (){
+		var player = function() {
 			this.x =  0
 		    this.y =  HEIGHT/2 - 30
             this.w =  10
             this.h =  60
+            this.up = 0
+            this.down = 0
             this.points = 0
         }
 
@@ -63,6 +65,22 @@
 				bg.fillRect (395, i*20 + 5, 5, 15)
 			}
 		}
+
+        var bindKeys = function() {
+            window.onkeydown = function(event){
+                var event = event || window.event
+                switch(event.keyCode){
+
+                }
+            }
+
+            window.onkeydown = function(event){
+                var event = event || window.event
+                switch(event.keyCode){
+                    
+                }
+            }
+        }
 
 		var update = function() {
 
