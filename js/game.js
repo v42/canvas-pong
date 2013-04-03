@@ -135,12 +135,16 @@
 
             //ball player 1 collision
             if(ball.speedX < 0 && (ball.x <= p1.x + p1.w) && (ball.x >= p1.x)) {
-                ball.speedX = -ball.speedX
+                if(ball.y >= p1.y && ball.y <= p1.y + p1.h){
+                    ball.speedX = -ball.speedX
+                }
             }
 
             //ball player 2 collision
             if(ball.speedX > 0 && (ball.x + ball.w >= p2.x) && (ball.x + ball.w <= p2.x + p2.w)) {
-                ball.speedX = -ball.speedX
+                if(ball.y >= p2.y && ball.y <= p2.y + p2.h){
+                    ball.speedX = -ball.speedX
+                }
             }
 		}
 
