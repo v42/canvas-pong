@@ -6,11 +6,10 @@ The main motivation of doing a pong implementation in canvas is to make it right
 
 ## Features
 
-- FSM
 - Sound
 - Multiplayer
 - Multiple canvas: scenario, gui and players
-- Pause
 - Bonus Features
+	- pause
 	- Network multiplayer
 	- AI
