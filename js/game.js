@@ -22,12 +22,12 @@
         }
 
         var ball = {
-            x: 0
-          , y: 0
+            x: WIDTH/2 - 5
+          , y: HEIGHT/2 - 5
           , w: 10
           , h: 10
-          , speedX: 10
-          , speedY: 10 
+          , speedX: 3
+          , speedY: 3
         }
 
         var init = function() {
@@ -46,9 +46,16 @@
 
             p1 = new player()
             p1.x = 10
+            p1.w2 = p1.w/2
+            p1.h2 = p1.h/2
 
             p2 = new player()
             p2.x = WIDTH - p2.w - 10
+            p2.w2 = p2.w/2
+            p2.h2 = p2.h/2
+
+            ball.w2 = ball.w/2
+            ball.h2 = ball.h/2
 
             bindKeys()
 			drawBG()
@@ -107,13 +114,33 @@
         }
 
 		var update = function() {
+            //player 1 movement
             if(p1.up || p1.down){
                 if(p1.up && !p1.down && p1.y >= 10 + p1.speed) p1.y -= p1.speed
                 if(p1.down && !p1.up && p1.y <= HEIGHT - p1.h - p1.speed - 10) p1.y += p1.speed
             }
+            //player 2 movement
             if(p2.up || p2.down){
                 if(p2.up && !p2.down && p2.y >= 10 + p2.speed) p2.y -= p2.speed
                 if(p2.down && !p2.up && p2.y <= HEIGHT - p2.h - p2.speed - 10) p2.y += p2.speed
+            }
+            //ball wall collision
+            if(ball.y <= 10 || ball.y >= HEIGHT - 10 - ball.h) {
+                ball.speedY = -ball.speedY
+            }
+
+            //ball movement
+            ball.x += ball.speedX
+            ball.y += ball.speedY
+
+            //ball player 1 collision
+            if(ball.speedX < 0 && (ball.x <= p1.x + p1.w) && (ball.x >= p1.x)) {
+                ball.speedX = -ball.speedX
+            }
+
+            //ball player 2 collision
+            if(ball.speedX > 0 && (ball.x + ball.w >= p2.x) && (ball.x + ball.w <= p2.x + p2.w)) {
+                ball.speedX = -ball.speedX
             }
 		}
 
