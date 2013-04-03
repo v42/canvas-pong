@@ -15,8 +15,9 @@
 		    this.y =  HEIGHT/2 - 30
             this.w =  10
             this.h =  60
-            this.up = 0
-            this.down = 0
+            this.up = false
+            this.down = false
+            this.speed = 10
             this.points = 0
         }
 
@@ -49,6 +50,7 @@
             p2 = new player()
             p2.x = WIDTH - p2.w - 10
 
+            bindKeys()
 			drawBG()
 			loop()
 		}
@@ -70,20 +72,49 @@
             window.onkeydown = function(event){
                 var event = event || window.event
                 switch(event.keyCode){
-
+                    case 87:
+                        p1.up = true
+                        break
+                    case 83:
+                        p1.down = true
+                        break
+                    case 38:
+                        p2.up = true
+                        break
+                    case 40:
+                        p2.down = true
+                        break
                 }
             }
 
-            window.onkeydown = function(event){
+            window.onkeyup = function(event){
                 var event = event || window.event
                 switch(event.keyCode){
-                    
+                    case 87:
+                        p1.up = false
+                        break
+                    case 83:
+                        p1.down = false
+                        break
+                    case 38:
+                        p2.up = false
+                        break
+                    case 40:
+                        p2.down = false
+                        break
                 }
             }
         }
 
 		var update = function() {
-
+            if(p1.up || p1.down){
+                if(p1.up && !p1.down && p1.y >= 10 + p1.speed) p1.y -= p1.speed
+                if(p1.down && !p1.up && p1.y <= HEIGHT - p1.h - p1.speed - 10) p1.y += p1.speed
+            }
+            if(p2.up || p2.down){
+                if(p2.up && !p2.down && p2.y >= 10 + p2.speed) p2.y -= p2.speed
+                if(p2.down && !p2.up && p2.y <= HEIGHT - p2.h - p2.speed - 10) p2.y += p2.speed
+            }
 		}
 
 		var draw = function() {
