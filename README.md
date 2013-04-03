@@ -1,6 +1,6 @@
 # Canvas Pong
 
-This is a simple pong game made in canvas.
+This is a simple pong game made in canvas with vanilla js only.
 
 ## Features
 
