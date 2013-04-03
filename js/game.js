@@ -66,6 +66,10 @@
 
             bindKeys()
             drawBG()
+            updatePoints()
+            window.setTimeout(function(){
+               updatePoints()
+            }, 20)
             loop()
         }
 
@@ -77,8 +81,8 @@
 
         var drawBG = function(){
             bg.fillStyle = "rgb(255,255,255)"
-            for (var i=0; i < 30; i++) {
-                bg.fillRect (397, i*20 + 5, 6, 15)
+            for (var i=0; i < 28; i++) {
+                bg.fillRect (397, i*21 + 10, 6, 15)
             }
         }
 
@@ -158,16 +162,16 @@
 
             //player 1 point
             if(ball.x >= WIDTH + ball.w){
-                p1.points++;
-                ball.reset();
-                update_points();
+                p1.points++
+                ball.reset()
+                updatePoints()
             }
 
             //player 2 point
             if(ball.x <= 0 - ball.w){
-                p2.points++;
-                ball.reset(2);
-                update_points();
+                p2.points++
+                ball.reset(2)
+                updatePoints()
             }
         }
 
@@ -185,11 +189,21 @@
             game.fillRect (p2.x, p2.y, p2.w, p2.h)
         }
 
-        var update_points = function(){
-            point_pause = true;
-            window.setTimeout(function(){
-                point_pause = false;
-            }, 2000);
+        var updatePoints = function(scored){
+            gui.clearRect(0, 0, WIDTH, HEIGHT)
+            gui.fillStyle = "rgb(255,255,255)"
+            gui.font = "bold 60px Rationale, sans-serif"
+
+            gui.fillText(p1.points, WIDTH/2 - 120, 50);
+            gui.fillText(p2.points, WIDTH/2 + 100, 50);
+
+            if(scored){
+                point_pause = true
+
+                window.setTimeout(function(){
+                    point_pause = false
+                }, 2000)
+            }
         }
 
         return {
