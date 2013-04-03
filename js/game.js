@@ -1,19 +1,19 @@
 ;(function() {
-	var Game = (function() {
-		var bg
-		  , gui
-		  , game
-		  , WIDTH = 800
-		  , HEIGHT = 600
-          , player
-          , p1
-          , p2
-          , ball
-          , point_pause = false
+    var Game = (function() {
+        var bg
+            , gui
+            , game
+            , WIDTH = 800
+            , HEIGHT = 600
+            , player
+            , p1
+            , p2
+            , ball
+            , point_pause = false
 
-		var player = function() {
-			this.x =  0
-		    this.y =  HEIGHT/2 - 30
+        var player = function() {
+            this.x =  0
+            this.y =  HEIGHT/2 - 30
             this.w =  10
             this.h =  60
             this.up = false
@@ -38,18 +38,18 @@
         }
 
         var init = function() {
-			var gic, gmc, guc
+            var gic, gmc, guc
 
-			bgc = document.getElementById('background')
-			gmc = document.getElementById('game')
-			gic = document.getElementById('gui')
+            bgc = document.getElementById('background')
+            gmc = document.getElementById('game')
+            gic = document.getElementById('gui')
 
-			bgc.width = gmc.width = gic.width = WIDTH
-			bgc.height = gmc.height = gic.height = HEIGHT
+            bgc.width = gmc.width = gic.width = WIDTH
+            bgc.height = gmc.height = gic.height = HEIGHT
 
-			bg = bgc.getContext('2d')
-			game = gmc.getContext('2d')
-			gui = gic.getContext('2d')
+            bg = bgc.getContext('2d')
+            game = gmc.getContext('2d')
+            gui = gic.getContext('2d')
 
             p1 = new player()
             p1.x = 10
@@ -65,22 +65,22 @@
             ball.h2 = ball.h/2
 
             bindKeys()
-			drawBG()
-			loop()
-		}
+            drawBG()
+            loop()
+        }
 
-		var loop = function() {
-			update()
-			draw()
-			window.requestAnimationFrame(loop)
-		}
+        var loop = function() {
+            update()
+            draw()
+            window.requestAnimationFrame(loop)
+        }
 
-		var drawBG = function(){
-			bg.fillStyle = "rgb(255,255,255)"
-			for (var i=0; i < 30; i++) {
-				bg.fillRect (397, i*20 + 5, 6, 15)
-			}
-		}
+        var drawBG = function(){
+            bg.fillStyle = "rgb(255,255,255)"
+            for (var i=0; i < 30; i++) {
+                bg.fillRect (397, i*20 + 5, 6, 15)
+            }
+        }
 
         var bindKeys = function() {
             window.onkeydown = function(event){
@@ -120,7 +120,7 @@
             }
         }
 
-		var update = function() {
+        var update = function() {
             //player 1 movement
             if(p1.up || p1.down){
                 if(p1.up && !p1.down && p1.y >= 10 + p1.speed) p1.y -= p1.speed
@@ -169,9 +169,9 @@
                 ball.reset(2);
                 update_points();
             }
-		}
+        }
 
-		var draw = function() {
+        var draw = function() {
             game.clearRect(0, 0, WIDTH, HEIGHT)
             game.fillStyle = "rgb(255,255,255)"
 
@@ -183,7 +183,7 @@
 
             //drawing player 2
             game.fillRect (p2.x, p2.y, p2.w, p2.h)
-		}
+        }
 
         var update_points = function(){
             point_pause = true;
@@ -192,10 +192,10 @@
             }, 2000);
         }
 
-		return {
-			init: init
-		}
+        return {
+            init: init
+        }
 
-	})()
-	Game.init()
+    })()
+    Game.init()
 })()
