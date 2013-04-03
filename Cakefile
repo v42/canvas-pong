@@ -19,3 +19,6 @@ task 'watch', ->
 
     watch 'css/*.styl', ->
     	invoke 'build:stylus'
+
+    watch 'js/*.js', ->
+        invoke 'bundle:js'
