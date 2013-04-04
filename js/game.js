@@ -28,12 +28,12 @@
           , w: 10
           , h: 10
           , speedX: 3
-          , speedY: 3
+          , speedY: 0
           , reset: function(player){
                 this.x = WIDTH/2 - 5;
                 this.y = HEIGHT/2 - 5;
                 this.speedX = player == 2 ? -3 : 3;
-                this.speedY = 3;
+                this.speedY = 0;
             }
         }
 
@@ -53,16 +53,9 @@
 
             p1 = new player()
             p1.x = 10
-            p1.w2 = p1.w/2
-            p1.h2 = p1.h/2
 
             p2 = new player()
             p2.x = WIDTH - p2.w - 10
-            p2.w2 = p2.w/2
-            p2.h2 = p2.h/2
-
-            ball.w2 = ball.w/2
-            ball.h2 = ball.h/2
 
             bindKeys()
             drawBG()
@@ -71,7 +64,7 @@
             document.getElementById('wrapper').style.fontFamily = "Rationale";
             window.setTimeout(function(){
                 updatePoints()
-            }, 25)
+            }, 100)
 
             loop()
         }
@@ -149,16 +142,24 @@
                 ball.y += ball.speedY
 
                 //ball player 1 collision
-                if(ball.speedX < 0 && (ball.x <= p1.x + p1.w) && (ball.x >= p1.x)) {
+                if(ball.speedX < 0 && (ball.x <= p1.x + p1.w) && (-ball.speedX > ball.w || ball.x >= p1.x)) {
                     if(ball.y >= p1.y && ball.y <= p1.y + p1.h){
-                        ball.speedX = -ball.speedX + .5
+                        if (ball.x < (p1.x + p1.w)){
+                            ball.x = p1.x + p1.w;
+                        }
+                        ball.speedX = -ball.speedX + 1
+                        ball.speedY -= ((p1.y + p1.h/2) - (ball.y + ball.h/2)) / 5
                     }
                 }
 
                 //ball player 2 collision
-                if(ball.speedX > 0 && (ball.x + ball.w >= p2.x) && (ball.x + ball.w <= p2.x + p2.w)) {
+                if(ball.speedX > 0 && (ball.x + ball.w >= p2.x) && (ball.speedX > ball.w || ball.x + ball.w <= p2.x + p2.w)) {
                     if(ball.y >= p2.y && ball.y <= p2.y + p2.h){
-                        ball.speedX = -ball.speedX - .5
+                        if (ball.x > p2.x){
+                            ball.x = p2.x;
+                        }
+                        ball.speedX = -ball.speedX - 1
+                        ball.speedY -= ((p2.y + p2.h/2) - (ball.y + ball.h/2)) / 5
                     }
                 }
             }
